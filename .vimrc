@@ -1,77 +1,170 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+" Vimrc
+"
+" Author: Jamie Bertram
+" Original Date: 2020-02-23
+" Work is released into the public domain
+
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+" Plugins
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+" Vundle
+" https://github.com/gmarik/vundle
+set nocp
+filetype off
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-" Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
-" Git plugin not hosted on GitHub
-" Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-" Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
-" Plugin 'ascenator/L9', {'name': 'newL9'}
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
+Bundle 'gmarik/vundle'
+Bundle 'flazz/vim-colorschemes'
+Bundle 'tpope/vim-commentary'
+Bundle 'leshill/vim-json'
+Bundle 'pangloss/vim-javascript'
+Bundle 'indenthtml.vim'
+Bundle 'tpope/vim-markdown'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+call vundle#end()
 
-" When started as "evim", evim.vim will already have done these settings, bail
-" out.
-if v:progname =~? "evim"
-  finish
-endif
+" We have to turn this stuff back on if we want all of our features.
+filetype plugin indent on " Filetype auto-detection
+syntax on " Syntax highlighting
 
-" Get the defaults that most users want.
-source $VIMRUNTIME/defaults.vim
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+" Fuzzy Search
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-if has("vms")
-  set nobackup		" do not keep a backup file, use versions instead
-else
-  set backup		" keep a backup file (restore to previous version)
-  if has('persistent_undo')
-    set undofile	" keep an undo file (undo changes after closing)
+set rtp+=/usr/local/bin/fzf
+
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
+  " Use ag in fzf for listing files.
+  let $FZF_DEFAULT_COMMAND = 'ag --literal --files-with-matches --nocolor --hidden -g ""'
+  if !exists(":Ag")
+    command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+    nnoremap \ :Ag<SPACE>
   endif
 endif
 
-if &t_Co > 2 || has("gui_running")
-  " Switch on highlighting the last used search pattern.
-  set hlsearch
-endif
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+" Keybindings
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-" Put these in an autocmd group, so that we can delete them easily.
-augroup vimrcEx
-  au!
+" Snippets
+nnoremap <Leader>l O~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<ESC>:Commentary<CR>
+nnoremap <Leader>d Yp
+nnoremap <Leader>f i
+        \File: <esc>:Commentary<cr>o
+        \Name: <esc>:Commentary<cr>o
+        \Date: <esc>"=strftime("%F")<cr>p:Commentary<cr>o
+        \Desc: <esc>:Commentary<cr>o
+        \Usage: <esc>:Commentary<cr>o
+        \<esc>:Commentary<cr>5kA
 
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
-augroup END
+" Shortcuts
+nnoremap <Leader>sv :so ~/.vimrc<CR>
 
-" Add optional packages.
-"
-" The matchit plugin makes the % command work better, but it is not backwards
-" compatible.
-" The ! means the package won't be loaded right away but when plugins are
-" loaded during initialization.
-if has('syntax') && has('eval')
-  packadd! matchit
-endif
+" break some bad habits
+nnoremap <Left> :echoe "Use h"<CR>
+nnoremap <Right> :echoe "Use l"<CR>
+nnoremap <Up> :echoe "Use k"<CR>
+nnoremap <Down> :echoe "Use j"<CR>
 
-syntax on
-set hls
-set nu relativenumber
-set wildchar=<Tab> wildmenu wildmode=full
+" Windows
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+nnoremap <Leader>q <C-w>q
+noremap <leader>v <C-w>v
+noremap <leader>h <C-w>h
+
+" So we don't have to press shift when we want to get into command mode.
+nnoremap ; :
+nnoremap : ;
+vnoremap ; :
+vnoremap : ;
+
+" So we don't have to reach for escape to leave insert mode.
+inoremap jf <esc>
+
+
+" Clear match highlighting
+noremap <leader><space> :noh<cr>:call clearmatches()<cr>
+
+" Quick buffer switching - like cmd-tab'ing
+nnoremap <leader><leader> <c-^>
+
+" Visual line nav, not real line nav
+" If you wrap lines, vim by default won't let you move down one line to the
+" wrapped portion. This fixes that.
+noremap j gj
+noremap k gk
+
+" Map the key for toggling comments with vim-commentary
+nnoremap <leader>c :Commentary<CR>
+
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+" General Editor Config
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+set backspace=indent,eol,start
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab " use spaces instead of tabs.
+set smarttab " let's tab key insert 'tab stops', and bksp deletes tabs.
+set shiftround " tab / shifting moves to closest tabstop.
+set autoindent " Match indents on new lines.
+set smartindent " Intellegently dedent / indent new lines based on rules.
+set history=50
+set ruler
+set showcmd
+set laststatus=2
+set autowrite
+set list listchars=tab:»·,trail:·,nbsp:·
+
+" Use one space, not two, after punctuation.
+set nojoinspaces
+
+" Numbers
+set number relativenumber
+set numberwidth=5
+
+" Make it obvious where 80 characters is
+set textwidth=80
+set colorcolumn=+1
+
+" Set defaults for new panes
+set splitbelow
+set splitright
+
+" We have VCS -- we don't need this stuff.
+set nobackup " We have vcs, we don't need backups.
+set nowritebackup " We have vcs, we don't need backups.
+set noswapfile " They're just annoying. Who likes them?
+
+" don't nag me when hiding buffers
+set hidden " allow me to have buffers with unsaved changes.
+set autoread " when a file has changed on disk, just load it. Don't ask.
+
+" Make search more sane
+set ignorecase " case insensitive search
+set smartcase " If there are uppercase letters, become case-sensitive.
+set incsearch " live incremental searching
+set showmatch " live match highlighting
+set hlsearch " highlight matches
+set gdefault " use the `g` flag by default.
+
+" allow the cursor to go anywhere in visual block mode.
+set virtualedit+=block
+
+" leader is a key that allows you to have your own "namespace" of keybindings.
+" You'll see it a lot below as <leader>
+map , <Leader>
+
+" Finally the color scheme. Choose whichever you want from the list in the
+" link above (back up where we included the bundle of a ton of themes.)
+colorscheme bluegreen
