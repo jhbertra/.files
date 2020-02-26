@@ -4,32 +4,28 @@
 " Original Date: 2020-02-23
 " Work is released into the public domain
 
+set nocp
+
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 " Plugins
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-" Vundle
-" https://github.com/gmarik/vundle
-set nocp
-filetype off
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Bundle 'gmarik/vundle'
-Bundle 'flazz/vim-colorschemes'
-Bundle 'tpope/vim-commentary'
-Bundle 'leshill/vim-json'
-Bundle 'pangloss/vim-javascript'
-Bundle 'indenthtml.vim'
-Bundle 'tpope/vim-markdown'
-
-call vundle#end()
-
-" We have to turn this stuff back on if we want all of our features.
-filetype plugin indent on " Filetype auto-detection
-syntax on " Syntax highlighting
+call plug#begin('~/.vim/plugged')
+Plug 'flazz/vim-colorschemes'
+Plug 'tpope/vim-commentary'
+Plug 'leshill/vim-json'
+Plug 'pangloss/vim-javascript'
+Plug 'tpope/vim-markdown'
+Plug 'preservim/nerdtree'
+Plug 'junegunn/fzf', { 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
+call plug#end()
 
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 " Fuzzy Search
@@ -110,6 +106,7 @@ nnoremap <leader>c :Commentary<CR>
 " General Editor Config
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+syntax on
 set backspace=indent,eol,start
 set tabstop=2
 set shiftwidth=2
