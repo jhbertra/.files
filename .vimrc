@@ -32,6 +32,7 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'ryanolsonx/vim-lsp-typescript'
 Plug 'easymotion/vim-easymotion'
 Plug 'https://tpope.io/vim/surround.git'
+Plug 'wellle/targets.vim'
 call plug#end()
 
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
