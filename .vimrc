@@ -30,7 +30,14 @@ Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'ryanolsonx/vim-lsp-typescript'
+Plug 'easymotion/vim-easymotion'
 call plug#end()
+
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+" Easymotion
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+map <Leader>m <Plug>(easymotion-prefix)
 
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 " Fuzzy Search
@@ -45,14 +52,12 @@ if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
   " Use ag in fzf for listing files.
   let $FZF_DEFAULT_COMMAND = 'ag --literal --files-with-matches --nocolor --hidden -g ""'
-  if !exists(":Ag")
-    command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-    nnoremap \ :Ag<SPACE>
-  endif
 endif
 
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 " Autocompletion - TypeScript
+  let $FZF_DEFAULT_COMMAND = 'ag --literal --files-with-matches --nocolor --hidden -g ""'
+endif
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 " Tab completion
@@ -112,10 +117,10 @@ inoremap jf <esc>
 
 
 " Clear match highlighting
-noremap <leader><space> :noh<cr>:call clearmatches()<cr>
+noremap <leader>, :noh<cr>:call clearmatches()<cr>
 
 " Quick buffer switching - like cmd-tab'ing
-nnoremap <leader><leader> <c-^>
+nnoremap <leader><tab> <c-^>
 
 " Visual line nav, not real line nav
 " If you wrap lines, vim by default won't let you move down one line to the
