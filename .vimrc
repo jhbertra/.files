@@ -17,21 +17,22 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
+Plug 'christoomey/vim-sort-motion'
+Plug 'easymotion/vim-easymotion'
 Plug 'flazz/vim-colorschemes'
-Plug 'tpope/vim-commentary'
-Plug 'leshill/vim-json'
-Plug 'pangloss/vim-javascript'
-Plug 'tpope/vim-markdown'
-Plug 'preservim/nerdtree'
+Plug 'https://tpope.io/vim/surround.git'
 Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
+Plug 'leshill/vim-json'
+Plug 'pangloss/vim-javascript'
 Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'preservim/nerdtree'
 Plug 'ryanolsonx/vim-lsp-typescript'
-Plug 'easymotion/vim-easymotion'
-Plug 'https://tpope.io/vim/surround.git'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-markdown'
 Plug 'wellle/targets.vim'
 call plug#end()
 
