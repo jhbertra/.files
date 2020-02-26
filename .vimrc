@@ -31,7 +31,9 @@ call plug#end()
 " Fuzzy Search
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-set rtp+=/usr/local/bin/fzf
+nnoremap <Leader>p :GFiles --exclude-standard --others --cached<CR>
+nnoremap <Leader>b :Buffers<CR>
+nnoremap <Leader>F :Lines<CR>
 
 if executable('ag')
   " Use Ag over Grep
