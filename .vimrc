@@ -124,6 +124,8 @@ set showcmd
 set laststatus=2
 set autowrite
 set list listchars=tab:»·,trail:·,nbsp:·
+set wildmenu
+set wildmode=list:longest,list:full
 
 " Use one space, not two, after punctuation.
 set nojoinspaces
@@ -162,7 +164,7 @@ set virtualedit+=block
 
 " leader is a key that allows you to have your own "namespace" of keybindings.
 " You'll see it a lot below as <leader>
-map , <Leader>
+map <space> <Leader>
 
 " Finally the color scheme. Choose whichever you want from the list in the
 " link above (back up where we included the bundle of a ton of themes.)
