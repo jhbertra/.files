@@ -84,6 +84,7 @@ nnoremap <Leader>f i
 
 " Shortcuts
 nnoremap <Leader>sv :so ~/.vimrc<CR>
+map <leader>h History<cr>
 
 " break some bad habits
 nnoremap <Left> :echoe "Use h"<CR>
@@ -139,7 +140,7 @@ set smarttab " let's tab key insert 'tab stops', and bksp deletes tabs.
 set shiftround " tab / shifting moves to closest tabstop.
 set autoindent " Match indents on new lines.
 set smartindent " Intellegently dedent / indent new lines based on rules.
-set history=50
+set history=500
 set ruler
 set showcmd
 set laststatus=2
@@ -147,6 +148,22 @@ set autowrite
 set list listchars=tab:»·,trail:·,nbsp:·
 set wildmenu
 set wildmode=list:longest,list:full
+set clipboard=unnamed
+set lazyredraw
+set ttyfast
+set nowrap
+set noerrorbells novisualbell
+set showcmd
+set undodir=~/.vim/undo/
+set undofile
+set undolevels=1000
+set undoreload=10000
+
+set wildignore+=*/tmp/*
+set wildignore+=*.so
+set wildignore+=*.zip
+set wildignore+=*/vendor/bundle/*
+set wildignore+=*/node_modules/
 
 " Use one space, not two, after punctuation.
 set nojoinspaces
@@ -154,6 +171,12 @@ set nojoinspaces
 " Numbers
 set number relativenumber
 set numberwidth=5
+
+set scrolloff=5
+set sidescrolloff=10
+
+highlight Comment cterm=italic gui=italic
+
 
 " Make it obvious where 80 characters is
 set textwidth=80
