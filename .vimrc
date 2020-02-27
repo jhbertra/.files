@@ -105,15 +105,7 @@ vnoremap ˚ :m '<-2<CR>gv=gv
 inoremap <s-tab> <c-d>
 
 " Snippets
-nnoremap <Leader>l O~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<ESC>:Commentary<CR>
 nnoremap <Leader>d Yp
-nnoremap <Leader>f i
-        \File: <esc>:Commentary<cr>o
-        \Name: <esc>:Commentary<cr>o
-        \Date: <esc>"=strftime("%F")<cr>p:Commentary<cr>o
-        \Desc: <esc>:Commentary<cr>o
-        \Usage: <esc>:Commentary<cr>o
-        \<esc>:Commentary<cr>5kA
 
 " Shortcuts
 nnoremap <Leader>sv :so ~/.vimrc<CR>
@@ -184,6 +176,7 @@ set clipboard=unnamed
 set lazyredraw
 set ttyfast
 set nowrap
+set wrap!
 set noerrorbells novisualbell
 set showcmd
 set undodir=~/.vim/undo/
@@ -226,6 +219,18 @@ set noswapfile " They're just annoying. Who likes them?
 " don't nag me when hiding buffers
 set hidden " allow me to have buffers with unsaved changes.
 set autoread " when a file has changed on disk, just load it. Don't ask.
+
+
+" Triger `autoread` when files changes on disk
+" https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
+" https://vi.stackexchange.com/questions/13692/prevent-focusgained-autocmd-running-in-command-line-editing-mode
+autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
+  \ if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif
+
+" Notification after file change
+" https://vi.stackexchange.com/questions/13091/autocmd-event-for-autoread
+autocmd FileChangedShellPost *
+  \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 
 " Make search more sane
 set ignorecase " case insensitive search
