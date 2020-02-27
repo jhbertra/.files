@@ -37,10 +37,13 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'preservim/nerdtree'
+Plug 'poetic/vim-textobj-javascript'
 Plug 'ryanolsonx/vim-lsp-typescript'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-markdown'
 Plug 'wellle/targets.vim'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install'}
 call plug#end()
 
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -65,8 +68,14 @@ if executable('ag')
 endif
 
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-" Autocompletion - TypeScript
+" TypeScript IDE
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+" Go to definition
+nnoremap gd :LspDefinition<cr>
+
+nnoremap <leader>ld :LspDocumentDiagnostics<CR>
+autocmd FileType qf nnoremap <silent> <buffer> <CR> <CR> :cclose<CR>:lclose<CR>
 
 " Tab completion
 inoremap <expr> <tab> pumvisible() ? "\<C-n>" : "\<tab>"
@@ -122,7 +131,6 @@ vnoremap : ;
 
 " So we don't have to reach for escape to leave insert mode.
 inoremap jf <esc>
-
 
 " Clear match highlighting
 noremap <leader>, :noh<cr>:call clearmatches()<cr>
