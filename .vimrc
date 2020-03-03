@@ -109,7 +109,7 @@ nnoremap <Leader>d Yp
 
 " Shortcuts
 nnoremap <Leader>sv :so ~/.vimrc<CR>
-map <leader>h History<cr>
+nnoremap <leader>h :History<cr>
 
 " break some bad habits
 nnoremap <Left> :echoe "Use h"<CR>
@@ -118,13 +118,12 @@ nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
 " Windows
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
-nnoremap <Leader>q <C-w>q
-noremap <leader>v <C-w>v
-noremap <leader>h <C-w>h
+nnoremap <leader>wh <C-w>h
+nnoremap <leader>wj <C-w>j
+nnoremap <leader>wk <C-w>k
+nnoremap <leader>wl <C-w>l
+nnoremap <leader>ws <C-w>s
+nnoremap <leader>wv <C-w>v
 
 " So we don't have to press shift when we want to get into command mode.
 nnoremap ; :

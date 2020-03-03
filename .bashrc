@@ -1,4 +1,6 @@
-alias config="/usr/bin/git --git-dir=/Users/jamiebertram/.files/ --work-tree=/Users/jamiebertram"
+source ~/.git-completion.bash
+# added by travis gem
+[ -f /Users/Jamie/.travis/travis.sh ] && source /Users/Jamie/.travis/travis.sh
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export PATH=/usr/local/Cellar/vim/8.2.0250_1/bin/:$PATH
