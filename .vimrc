@@ -48,6 +48,7 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'tpope/vim-fugitive'
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-abolish'
+Plug 'vim-airline/vim-airline'
 call plug#end()
 
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
