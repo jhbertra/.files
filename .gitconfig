@@ -1,0 +1,16 @@
+[user]
+  name = Jamie Bertram
+  email = jamie@genm.co
+[alias]
+  co = commit
+  ch = checkout
+  s = status
+  br = branch
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  pf = push --force-with-lease
+[merge]
+  tool = vimdiff
+  conflictstyle = diff3
+[mergetool]
+  keepBackup = false
+  prompt = false
