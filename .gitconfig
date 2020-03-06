@@ -2,12 +2,12 @@
   name = Jamie Bertram
   email = jamie.bertram@acadium.com
 [alias]
-  co = commit
-  ch = checkout
-  s = status
   br = branch
-  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  ch = checkout
+  co = commit
+  hist = log --oneline --graph --decorate --all
   pf = push --force-with-lease
+  s = status
 [merge]
   tool = vimdiff
   conflictstyle = diff3
