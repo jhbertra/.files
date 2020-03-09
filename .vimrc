@@ -150,6 +150,8 @@ nnoremap <leader>wl <C-w>l
 nnoremap <leader>ws <C-w>s
 nnoremap <leader>wv <C-w>v
 
+nnoremap <leader>k i<cr><esc><s-o>
+
 " So we don't have to press shift when we want to get into command mode.
 nnoremap ; :
 nnoremap : ;
