@@ -18,14 +18,14 @@ inadd () {
   pushd ~/.gtd/in >/dev/null
   touch "$@"
   git add "$@"
-  git commit -m "in: add $@"
+  git commit -m "in: add: $@"
   popd >/dev/null
 }
 
 inrm () {
   pushd ~/.gtd/in >/dev/null
   git rm "$@"
-  git commit -m "in: rm $@"
+  git commit -m "in: rm: $@"
   popd >/dev/null
 }
 
@@ -33,7 +33,7 @@ invim () {
   pushd ~/.gtd/in >/dev/null
   vim "$@"
   git add "$@"
-  git commit -m "in: vim $@"
+  git commit -m "in: vim: $@"
   popd >/dev/null
 }
 
@@ -41,14 +41,14 @@ inopen () {
   pushd ~/.gtd/in >/dev/null
   open "$@"
   git add "$@"
-  git commit -m "in: open $@"
+  git commit -m "in: open: $@"
   popd >/dev/null
 }
 
 inmv () {
   pushd ~/.gtd/in >/dev/null
   git mv "$@"
-  git commit -m "in: mv $@"
+  git commit -m "in: mv: $1 -> $2"
   popd >/dev/null
 }
 
@@ -56,7 +56,7 @@ input () {
   cp $1 ~/.gtd/in
   pushd ~/.gtd/in >/dev/null
   git add .
-  git commit -m "in: put $1"
+  git commit -m "in: put: $1"
   popd >/dev/null
 }
 
