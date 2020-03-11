@@ -18,7 +18,6 @@ endif
 
 call plug#begin('~/.vim/plugged')
 Plug 'christoomey/vim-sort-motion'
-Plug 'christoomey/vim-system-copy'
 Plug 'easymotion/vim-easymotion'
 Plug 'flazz/vim-colorschemes'
 Plug 'https://tpope.io/vim/surround.git'
@@ -26,32 +25,24 @@ Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-entire'
-Plug 'kana/vim-textobj-function'
-Plug 'haya14busa/vim-textobj-function-syntax'
 Plug 'kana/vim-textobj-line'
 Plug 'leshill/vim-json'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'pangloss/vim-javascript'
 Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/vim-lsp'
-Plug 'preservim/nerdtree'
-Plug 'poetic/vim-textobj-javascript'
 Plug 'ryanolsonx/vim-lsp-typescript'
 Plug 'tpope/vim-commentary'
 Plug 'wellle/targets.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install'}
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-Plug 'tpope/vim-fugitive'
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-abolish'
 Plug 'vim-airline/vim-airline'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 call plug#end()
-
 
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 " Vim Markdown
@@ -227,7 +218,6 @@ set sidescrolloff=10
 
 highlight Comment cterm=italic gui=italic
 
-
 " Make it obvious where 80 characters is
 set textwidth=80
 set colorcolumn=+1
@@ -269,7 +259,6 @@ set gdefault " use the `g` flag by default.
 set virtualedit+=block
 
 " leader is a key that allows you to have your own "namespace" of keybindings.
-" You'll see it a lot below as <leader>
 map <space> <Leader>
 
 " Finally the color scheme. Choose whichever you want from the list in the
