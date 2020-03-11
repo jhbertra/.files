@@ -27,14 +27,21 @@ inrm () {
   popd >/dev/null
 }
 
-_inrm () {
+alias inls="ls -1 ~/.gtd/in/"
+
+invim () {
+  pushd ~/.gtd/in >/dev/null
+  vim "$@"
+  popd >/dev/null
+}
+
+_inls () {
   IFS=$'\n' tmp=( $(compgen -W "$(ls -1 ~/.gtd/in)" -- "${COMP_WORDS[$COMP_CWORD]}" ) )
   COMPREPLY=()
   for file in "${tmp[@]}"
   do
-    COMPREPLY+=( "$(echo "$file" | sed 's/ /\\ /')" )
+    COMPREPLY+=( "$(echo "$file" | sed 's/ /\\ /g')" )
   done
 }
-complete -o default -F _inrm inrm
-
-alias inls="ls -1 ~/.gtd/in/"
+complete -o default -F _inls inrm
+complete -o default -F _inls invim
