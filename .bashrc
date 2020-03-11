@@ -37,6 +37,14 @@ invim () {
   popd >/dev/null
 }
 
+inopen () {
+  pushd ~/.gtd/in >/dev/null
+  open "$@"
+  git add "$@"
+  git commit -m "inopen $@"
+  popd >/dev/null
+}
+
 inmv () {
   pushd ~/.gtd/in >/dev/null
   git mv "$@"
@@ -53,8 +61,9 @@ _inls () {
   done
 }
 
+complete -o default -F _inls inmv
+complete -o default -F _inls inopen
 complete -o default -F _inls inrm
 complete -o default -F _inls invim
-complete -o default -F _inls inmv
 
 alias inls="ls -1 ~/.gtd/in/"
