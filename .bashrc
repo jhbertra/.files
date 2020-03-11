@@ -14,7 +14,7 @@ alias sb="source ~/.bashrc"
 # GTD commands
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-intouch () {
+inadd () {
   pushd ~/.gtd/in >/dev/null
   touch "$@"
   git add "$@"
