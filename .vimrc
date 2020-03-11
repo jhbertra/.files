@@ -42,6 +42,7 @@ Plug 'tpope/vim-abolish'
 Plug 'vim-airline/vim-airline'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
+Plug 'ycm-core/YouCompleteMe', { 'do': 'python3 install.py --all' }
 call plug#end()
 
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -91,19 +92,9 @@ autocmd BufWritePre *.tsx PrettierAsync
 nnoremap gd :LspDefinition<cr>
 
 nnoremap <leader>ld :LspDocumentDiagnostics<CR>
-autocmd FileType qf nnoremap <silent> <buffer> <CR> <CR> :cclose<CR>:lclose<CR>
 
 " Tab completion
 inoremap <expr> <tab> pumvisible() ? "\<C-n>" : "\<tab>"
-inoremap <expr> <s-tab> pumvisible() ? "\<C-n>" : "\<s-tab>"
-inoremap <expr> <cr> pumvisible() ? "\<C-n>" : "\<cr>"
-
-" Force-refresh completion
-imap <C-Space> <Plug>(asyncomplete_force_refresh)
-
-" Preview window
-set completeopt+=preview
-autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 " Keybindings
