@@ -52,6 +52,18 @@ inmv () {
   popd >/dev/null
 }
 
+input () {
+  cp $1 ~/.gtd/in
+  pushd ~/.gtd/in >/dev/null
+  git add .
+  git commit -m "input $1"
+  popd >/dev/null
+}
+
+inget () {
+  cp ~/.gtd/in/$1 .
+}
+
 _inls () {
   IFS=$'\n' tmp=( $(compgen -W "$(ls -1 ~/.gtd/in)" -- "${COMP_WORDS[$COMP_CWORD]}" ) )
   COMPREPLY=()
@@ -61,6 +73,7 @@ _inls () {
   done
 }
 
+complete -o default -F _inls inget
 complete -o default -F _inls inmv
 complete -o default -F _inls inopen
 complete -o default -F _inls inrm
