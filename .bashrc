@@ -15,23 +15,32 @@ alias sb="source ~/.bashrc"
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 intouch () {
-
   pushd ~/.gtd/in >/dev/null
   touch "$@"
+  git add "$@"
+  git commit -m "intouch $@"
   popd >/dev/null
 }
 
 inrm () {
   pushd ~/.gtd/in >/dev/null
-  rm "$@"
+  git rm "$@"
+  git commit -m "inrm $@"
   popd >/dev/null
 }
-
-alias inls="ls -1 ~/.gtd/in/"
 
 invim () {
   pushd ~/.gtd/in >/dev/null
   vim "$@"
+  git add "$@"
+  git commit -m "invim $@"
+  popd >/dev/null
+}
+
+inmv () {
+  pushd ~/.gtd/in >/dev/null
+  git mv "$@"
+  git commit -m "inmv $@"
   popd >/dev/null
 }
 
@@ -43,5 +52,9 @@ _inls () {
     COMPREPLY+=( "$(echo "$file" | sed 's/ /\\ /g')" )
   done
 }
+
 complete -o default -F _inls inrm
 complete -o default -F _inls invim
+complete -o default -F _inls inmv
+
+alias inls="ls -1 ~/.gtd/in/"
