@@ -71,6 +71,7 @@ map <Leader>m <Plug>(easymotion-prefix)
 
 nnoremap <Leader>p :GFiles --exclude-standard --others --cached<CR>
 nnoremap <Leader>b :Buffers<CR>
+nnoremap <leader>h :History<cr>
 nnoremap <Leader>F :Lines<CR>
 
 if executable('ag')
@@ -111,12 +112,11 @@ vnoremap ˚ :m '<-2<CR>gv=gv
 " Tabbing in insert mode
 inoremap <s-tab> <c-d>
 
-" Snippets
+" Duplicate line
 nnoremap <Leader>d Yp
 
 " Shortcuts
 nnoremap <Leader>sv :so ~/.vimrc<CR>
-nnoremap <leader>h :History<cr>
 
 " break some bad habits
 nnoremap <Left> :echoe "Use h"<CR>
