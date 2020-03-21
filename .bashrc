@@ -1,4 +1,5 @@
 source ~/.git-completion.bash
+source ~/.hledger-completion.bash
 # added by travis gem
 [ -f /Users/Jamie/.travis/travis.sh ] && source /Users/Jamie/.travis/travis.sh
 
@@ -8,7 +9,7 @@ export PATH=/usr/local/Cellar/python/3.7.6_1/bin/:$PATH
 alias vimrc="vim ~/.vimrc"
 alias bashrc="vim ~/.bashrc"
 alias sb="source ~/.bashrc"
-
+export LEDGER_FILE=~/finances/default.journal
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # GTD commands
