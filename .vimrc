@@ -43,6 +43,9 @@ Plug 'vim-airline/vim-airline'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'ycm-core/YouCompleteMe', { 'do': 'python3 install.py --all' }
+Plug 'https://tpope.io/vim/unimpaired.git'
+Plug 'https://tpope.io/vim/repeat.git'
+Plug 'ledger/vim-ledger'
 call plug#end()
 
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
