@@ -46,6 +46,8 @@ Plug 'ycm-core/YouCompleteMe', { 'do': 'python3 install.py --all' }
 Plug 'https://tpope.io/vim/unimpaired.git'
 Plug 'https://tpope.io/vim/repeat.git'
 Plug 'ledger/vim-ledger'
+Plug 'tommcdo/vim-exchange'
+Plug 'vim-scripts/ReplaceWithRegister'
 call plug#end()
 
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
