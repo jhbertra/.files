@@ -75,7 +75,6 @@ map <Leader>m <Plug>(easymotion-prefix)
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 nnoremap <Leader>p :GFiles --exclude-standard --others --cached<CR>
-nnoremap <Leader>b :Buffers<CR>
 nnoremap <leader>h :History<cr>
 nnoremap <Leader>F :Lines<CR>
 
@@ -107,12 +106,12 @@ inoremap <expr> <tab> pumvisible() ? "\<C-n>" : "\<tab>"
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 " Moving lines
-nnoremap ∆ :m .+1<CR>==
-nnoremap ˚ :m .-2<CR>==
-inoremap ∆ <Esc>:m .+1<CR>==gi
-inoremap ˚ <Esc>:m .-2<CR>==gi
-vnoremap ∆ :m '>+1<CR>gv=gv
-vnoremap ˚ :m '<-2<CR>gv=gv
+nnoremap <Leader>j :m .+1<CR>==
+inoremap <Leader>j <Esc>:m .+1<CR>==gi
+inoremap <Leader>k <Esc>:m .-2<CR>==gi
+nnoremap <Leader>k :m .-2<CR>==
+vnoremap <Leader>k :m '<-2<CR>gv=gv
+vnoremap <Leader>j :m '>+1<CR>gv=gv
 
 " Tabbing in insert mode
 inoremap <s-tab> <c-d>
@@ -129,21 +128,7 @@ nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
 
-" Windows
-nnoremap <leader>wh <C-w>h
-nnoremap <leader>wj <C-w>j
-nnoremap <leader>wk <C-w>k
-nnoremap <leader>wl <C-w>l
-nnoremap <leader>ws <C-w>s
-nnoremap <leader>wv <C-w>v
-
-nnoremap <leader>k i<cr><esc><s-o>
-
-" So we don't have to press shift when we want to get into command mode.
-nnoremap ; :
-nnoremap : ;
-vnoremap ; :
-vnoremap : ;
+nnoremap <leader>b i<cr><esc><s-o>
 
 " So we don't have to reach for escape to leave insert mode.
 inoremap jf <esc>
@@ -153,12 +138,6 @@ noremap <leader>, :noh<cr>:call clearmatches()<cr>
 
 " Quick buffer switching - like cmd-tab'ing
 nnoremap <leader><tab> <c-^>
-
-" Visual line nav, not real line nav
-" If you wrap lines, vim by default won't let you move down one line to the
-" wrapped portion. This fixes that.
-noremap j gj
-noremap k gk
 
 " Map the key for toggling comments with vim-commentary
 nnoremap <leader>c :Commentary<CR>
