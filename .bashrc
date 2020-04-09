@@ -12,6 +12,7 @@ export PATH=/usr/local/Cellar/vim/8.2.0250_1/bin/:$PATH
 
 alias cfb="vim ~/.bashrc"
 alias cfbp="vim ~/.bash_profile"
+alias cfi="vim ~/.inputrc"
 alias cfv="vim ~/.vimrc"
 alias lpl="lpass ls"
 alias lps="lpass show"
