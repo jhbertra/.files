@@ -18,7 +18,6 @@ endif
 
 call plug#begin('~/.vim/plugged')
 Plug 'christoomey/vim-sort-motion'
-Plug 'easymotion/vim-easymotion'
 Plug 'flazz/vim-colorschemes'
 Plug 'https://tpope.io/vim/surround.git'
 Plug 'junegunn/fzf', { 'do': './install --bin' }
