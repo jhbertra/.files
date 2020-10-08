@@ -5,7 +5,7 @@
 export EDITOR=vim
 export LEDGER_FILE=~/finances/default.journal
 export PATH=/usr/local/Cellar/python/3.7.6_1/bin/:$PATH
-export PATH=/usr/local/Cellar/vim/8.2.0250_1/bin/:$PATH
+export PATH=/usr/local/Cellar/vim/8.2.1250/bin/:$PATH
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Aliases

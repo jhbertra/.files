@@ -35,7 +35,6 @@ Plug 'tpope/vim-commentary'
 Plug 'wellle/targets.vim'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install'}
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-abolish'
 Plug 'vim-airline/vim-airline'
@@ -47,7 +46,17 @@ Plug 'https://tpope.io/vim/repeat.git'
 Plug 'ledger/vim-ledger'
 Plug 'tommcdo/vim-exchange'
 Plug 'vim-scripts/ReplaceWithRegister'
+Plug 'qpkorr/vim-renamer'
+Plug 'dense-analysis/ale'
 call plug#end()
+
+
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+" ALE
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+let g:ale_fix_on_save = 1
+let g:ale_linters_explicit = 1
 
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 " Vim Markdown
@@ -87,10 +96,6 @@ endif
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 " TypeScript IDE
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-" Autoformatting
-autocmd BufWritePre *.ts PrettierAsync
-autocmd BufWritePre *.tsx PrettierAsync
 
 " Go to definition
 nnoremap gd :LspDefinition<cr>
